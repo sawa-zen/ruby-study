@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require 'pry'
 
 class App < Sinatra::Base
 
@@ -15,6 +16,7 @@ class App < Sinatra::Base
   end
 
   get '/' do
+    binding.pry
     'hi'
   end
 
