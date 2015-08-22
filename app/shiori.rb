@@ -21,9 +21,18 @@ class Shiori < Sinatra::Base
   end
 
   get '/' do
-    Bookmark.create!(url: 'http://sawa-zen.com')
     p Bookmark
     @bookmarks = Bookmark.all
     erb :index
   end
+
+  get '/new' do
+    erb :new
+  end
+
+  post '/create' do
+    Bookmark.create!(url: params[:url])
+    redirect '/'
+  end
+
 end
