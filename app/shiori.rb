@@ -31,8 +31,17 @@ class Shiori < Sinatra::Base
   end
 
   post '/create' do
-    Bookmark.create!(url: params[:url])
-    redirect '/'
+    begin
+      # データを保存できた場合は
+      # '/'へリダイレクト
+      Bookmark.create!(url: params[:url])
+      redirect '/'
+    rescue ActiveRecord::RecordInvalid => e
+      # データ保存に失敗したら
+      # サイド登録画面を描画
+      @bookmark = e.record
+      erb :new
+    end
   end
 
 end
