@@ -1,3 +1,3 @@
-require './app'
+require './app/shiori'
 
-run App.new
+run Shiori
