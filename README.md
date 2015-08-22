@@ -5,11 +5,15 @@
 ## Setup
 
 ```
-bundle install
+$ bundle install
+```
+
+```
+$ sqlite3 db/sqlite.db < db/schema.sqlite3.sql
 ```
 
 ## Run server
 
 ```
-bundle exec ruby rackup
+$ bundle exec ruby rackup
 ```
