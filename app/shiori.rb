@@ -21,8 +21,7 @@ class Shiori < Sinatra::Base
   end
 
   get '/' do
-    p Bookmark
-    @bookmarks = Bookmark.all
+    @bookmarks = Bookmark.order('id DESC')
     erb :index
   end
 
