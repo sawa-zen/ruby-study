@@ -1,8 +1,11 @@
 require 'sinatra/base'
 require 'active_record'
+require 'will_paginate'
 require_relative 'models/bookmark'
 
 class Shiori < Sinatra::Base
+
+  register WillPaginate::Sinatra
 
   helpers do
     def h(text)
@@ -21,7 +24,7 @@ class Shiori < Sinatra::Base
   end
 
   get '/' do
-    @bookmarks = Bookmark.order('id DESC')
+    @bookmarks = Bookmark.order('id DESC').page(params[:page])
     erb :index
   end
 
