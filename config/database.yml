@@ -13,4 +13,4 @@ development:
 
 test:
   adapter: sqlite3
-  database: sb/sqlite.test.db
+  database: db/sqlite.test.db
