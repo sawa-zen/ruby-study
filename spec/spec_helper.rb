@@ -12,4 +12,9 @@ RSpec.configure do |config|
   # Capybara Settings
   Capybara.app = Shiori
   config.include Capybara::DSL
+
+  # データベースのデータをテストのたびに空にする
+  config.before :each do
+    Bookmark.destroy_all
+  end
 end
