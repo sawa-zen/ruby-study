@@ -2,6 +2,7 @@ require 'sinatra/base'
 require 'active_record'
 require 'will_paginate'
 require_relative 'models/bookmark'
+require_relative 'db'
 
 class Shiori < Sinatra::Base
 
@@ -14,12 +15,9 @@ class Shiori < Sinatra::Base
   end
 
   configure do
-    db_path = File.expand_path(File.join(
-      'root', '..', 'db', 'sqlite.db'
-    ))
-    ActiveRecord::Base.establish_connection(
-      adapter: 'sqlite3',
-      database: db_path
+    DB.connect(
+      File.expand_path(File.join(root, '..')),
+      ENV['RACK_ENV']
     )
   end
 
