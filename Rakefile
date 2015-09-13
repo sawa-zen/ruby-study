@@ -10,8 +10,8 @@ task :csv do |t|
   CSV.open(csv_path, 'wb') do |csv|
     # CSVのヘッダ行を作成
     csv << Bookmark.attribute_names
-    # AVctiveRecordのfind_eachメソッドを使って、
-    # 一度に先見を取得するのではなく、
+    # ActiveRecordのfind_eachメソッドを使って、
+    # 一度に全件を取得するのではなく、
     # 1,000件(デフォルト)ずつ取得する
     Bookmark.find_each do |bookmark|
       csv << bookmark.attributes.values
